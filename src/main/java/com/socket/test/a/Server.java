@@ -1,4 +1,4 @@
-package com.socket.test.one;
+package com.socket.test.a;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -15,6 +15,15 @@ public class Server extends Thread {
 
     public Server(int port) throws IOException {
         serverSocket = new ServerSocket(port);
+    }
+
+    public static void main(String[] args) {
+        try {
+            Thread t = new Server(4223);
+            t.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void run() {
@@ -40,15 +49,6 @@ public class Server extends Thread {
                 e.printStackTrace();
                 break;
             }
-        }
-    }
-
-    public static void main(String[] args) {
-        try {
-            Thread t = new Server(4223);
-            t.start();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }
